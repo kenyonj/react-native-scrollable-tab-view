@@ -21,6 +21,7 @@ const ScrollableTabBar = React.createClass({
     backgroundColor: React.PropTypes.string,
     activeTextColor: React.PropTypes.string,
     inactiveTextColor: React.PropTypes.string,
+    borderBottomColor: React.PropTypes.string,
     scrollOffset: React.PropTypes.number,
     style: View.propTypes.style,
     tabStyle: View.propTypes.style,
@@ -36,6 +37,8 @@ const ScrollableTabBar = React.createClass({
       activeTextColor: 'navy',
       inactiveTextColor: 'black',
       backgroundColor: null,
+      borderBottomColor: '#ccc',
+      underlineHeight: 4,
       style: {},
       tabStyle: {},
       tabsContainerStyle: {},
@@ -162,7 +165,7 @@ const ScrollableTabBar = React.createClass({
     };
 
     return <View
-      style={[styles.container, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}
+      style={[styles.container, {backgroundColor: this.props.backgroundColor, borderBottomColor: this.props.borderBottomColor}, this.props.style, ]}
       onLayout={this.onContainerLayout}
     >
       <ScrollView
@@ -229,7 +232,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
   },
   tabs: {
     flexDirection: 'row',

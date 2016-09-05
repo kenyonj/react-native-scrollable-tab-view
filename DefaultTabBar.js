@@ -16,6 +16,7 @@ const DefaultTabBar = React.createClass({
     backgroundColor: React.PropTypes.string,
     activeTextColor: React.PropTypes.string,
     inactiveTextColor: React.PropTypes.string,
+    borderBottomColor: React.PropTypes.string,
     textStyle: Text.propTypes.style,
     tabStyle: View.propTypes.style,
     renderTab: React.PropTypes.func,
@@ -27,6 +28,9 @@ const DefaultTabBar = React.createClass({
       activeTextColor: 'navy',
       inactiveTextColor: 'black',
       backgroundColor: null,
+      borderBottomColor: '#ccc',
+      underlineHeight: 4,
+      renderTabName: this.renderTabName,
     };
   },
 
@@ -69,7 +73,7 @@ const DefaultTabBar = React.createClass({
       inputRange: [0, 1, ], outputRange: [0,  containerWidth / numberOfTabs, ],
     });
     return (
-      <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}>
+      <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, borderBottomColor: this.props.borderBottomColor}, this.props.style, ]}>
         {this.props.tabs.map((name, page) => {
           const isTabActive = this.props.activeTab === page;
           const renderTab = this.props.renderTab || this.renderTab;
@@ -96,7 +100,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderColor: '#ccc',
   },
 });
 
